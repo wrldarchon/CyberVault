@@ -4,20 +4,38 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- GOOGLE SEO - MAKES YOU FINDABLE FOR "cybervaultorg" -->
-<title>CyberVaultOrg - Secure Digital Vault for Your Passwords & Files</title>
-<meta name="description" content="CyberVaultOrg is a secure, encrypted digital vault to store your passwords, files, and private notes. 100% secure, private, and free.">
-<meta name="keywords" content="cybervaultorg, cybervault, secure vault, password manager, encrypted storage">
+<!-- ============ GOOGLE SEO - MAKES cybervaultorg SEARCHABLE ============ -->
+<title>CyberVaultOrg - Secure Digital Vault for Passwords, Files & Notes</title>
+<meta name="description" content="CyberVaultOrg is a secure, encrypted digital vault to store your passwords, files, and private notes. 100% private, military-grade encryption. Search CyberVaultOrg on Google.">
+<meta name="keywords" content="cybervaultorg, cyber vault org, cybervault, secure vault, password manager, encrypted storage, digital vault">
 <meta name="author" content="CyberVaultOrg">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="google-site-verification" content="cybervaultorg">
 <link rel="canonical" href="https://cybervaultorg.netlify.app/">
-<meta property="og:title" content="CyberVaultOrg - Secure Digital Vault">
-<meta property="og:description" content="Secure your digital life with CyberVaultOrg.">
-<meta property="og:url" content="https://cybervaultorg.netlify.app/">
 <meta property="og:type" content="website">
+<meta property="og:title" content="CyberVaultOrg - Secure Digital Vault">
+<meta property="og:description" content="Your secure digital fortress for passwords, files and notes.">
+<meta property="og:url" content="https://cybervaultorg.netlify.app/">
+<meta property="og:site_name" content="CyberVaultOrg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CyberVaultOrg">
+<meta name="twitter:description" content="Secure digital vault for your private data">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "CyberVaultOrg",
+  "alternateName": "cybervaultorg",
+  "url": "https://cybervaultorg.netlify.app",
+  "description": "Secure encrypted digital vault to store passwords, files and private notes",
+  "applicationCategory": "SecurityApplication",
+  "operatingSystem": "Any",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+}
+</script>
+<!-- ============ END GOOGLE SEO ============ -->
 
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap');
@@ -26,103 +44,68 @@ body{font-family:'Space Grotesk',sans-serif;background:#050508;color:white;}
 </style>
 </head>
 <body class="min-h-screen">
+
 <nav class="flex justify-between items-center p-4 border-b border-white/10">
 <div class="flex items-center gap-2"><div class="w-8 h-8 bg-violet-600 rounded-lg flex items-center justify-center"><i class="fa-solid fa-shield-halved"></i></div><span class="font-bold text-xl">CyberVaultOrg</span></div>
-<div class="flex items-center gap-3"><span id="userDisplay" class="text-sm text-white/60 hidden"></span><button onclick="openSettings()" class="glass px-4 py-2 rounded-full text-sm"><i class="fa-solid fa-gear mr-2"></i>Settings</button><button onclick="logOut()" class="bg-red-500/20 border border-red-500/30 px-4 py-2 rounded-full text-sm"><i class="fa-solid fa-right-from-bracket mr-2"></i>Logout</button></div>
+<div id="afterLoginNav" class="hidden text-sm text-white/50"></div>
 </nav>
 
+<!-- LOGIN SCREEN - NO SETTINGS/LOGOUT HERE -->
 <div id="loginScreen" class="max-w-md mx-auto mt-20 p-8 glass rounded-3xl">
 <h1 class="text-3xl font-bold text-center mb-2">CyberVaultOrg</h1>
 <p class="text-center text-white/60 text-sm mb-8">Login to your secure vault</p>
-<label class="text-sm text-white/60">Email / Username</label><input id="loginUser" class="w-full bg-black/50 border border-white/10 p-3 rounded-xl mt-1 mb-4" placeholder="Enter username or email">
+<label class="text-sm text-white/60">Username</label><input id="loginUser" class="w-full bg-black/50 border border-white/10 p-3 rounded-xl mt-1 mb-4" placeholder="Enter username">
 <label class="text-sm text-white/60">Password</label><input id="loginPass" type="password" class="w-full bg-black/50 border border-white/10 p-3 rounded-xl mt-1 mb-6" placeholder="Enter password">
-<div class="flex gap-3"><button onclick="doLogin()" class="flex-1 bg-violet-600 py-3 rounded-full font-bold">Login</button><button onclick="doSignup()" class="flex-1 bg-white text-black py-3 rounded-full font-bold">Sign Up</button></div>
-<p id="authMsg" class="text-xs text-center mt-4 text-white/50"></p>
+<button onclick="login()" class="w-full bg-violet-600 hover:bg-violet-700 py-3 rounded-full font-bold">Login / Create Account</button>
 </div>
 
+<!-- MAIN VAULT - SETTINGS & LOGOUT ARE HERE, AFTER LOGIN -->
 <div id="mainVault" class="max-w-6xl mx-auto p-4 md:p-8 hidden">
-<div class="text-center py-6"><h1 class="text-4xl font-bold mb-2">Your Digital Fortress</h1><p class="text-white/60 mb-8">Welcome, <span id="welcomeName" class="text-white font-bold"></span></p></div>
+
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8 glass p-5 rounded-2xl border border-violet-500/20">
+<div>
+<h1 class="text-2xl md:text-3xl font-bold">Your Digital Fortress</h1>
+<p class="text-white/60 text-sm mt-1">Welcome, <span id="welcomeName" class="text-violet-400 font-bold"></span> 🔐</p>
+</div>
+<div class="flex gap-3">
+<button onclick="openSettings()" class="bg-white/10 border border-white/20 px-5 py-2.5 rounded-full text-sm hover:bg-white/20 transition"><i class="fa-solid fa-gear mr-2"></i>Settings</button>
+<button onclick="logout()" class="bg-red-500/20 border border-red-500/30 px-5 py-2.5 rounded-full text-sm hover:bg-red-500/30 transition"><i class="fa-solid fa-right-from-bracket mr-2"></i>Logout</button>
+</div>
+</div>
+
 <div class="grid md:grid-cols-3 gap-4">
-<div class="glass p-6 rounded-2xl"><i class="fa-solid fa-key text-violet-400 text-2xl mb-3"></i><h3 class="font-bold">Passwords</h3><input id="passInput" placeholder="Gmail - MyPass123" class="w-full bg-black/50 border border-white/10 p-3 rounded-xl text-sm mt-3"><button onclick="saveProject('passwords')" class="mt-3 w-full bg-white text-black py-2 rounded-full text-sm font-bold">Save</button></div>
-<div class="glass p-6 rounded-2xl"><i class="fa-solid fa-file text-blue-400 text-2xl mb-3"></i><h3 class="font-bold">Files</h3><input id="fileInput" placeholder="Bank doc" class="w-full bg-black/50 border border-white/10 p-3 rounded-xl text-sm mt-3"><button onclick="saveProject('files')" class="mt-3 w-full bg-white text-black py-2 rounded-full text-sm font-bold">Save</button></div>
-<div class="glass p-6 rounded-2xl"><i class="fa-solid fa-note-sticky text-green-400 text-2xl mb-3"></i><h3 class="font-bold">Notes</h3><input id="noteInput" placeholder="Secret note" class="w-full bg-black/50 border border-white/10 p-3 rounded-xl text-sm mt-3"><button onclick="saveProject('notes')" class="mt-3 w-full bg-white text-black py-2 rounded-full text-sm font-bold">Save</button></div>
-</div>
-<div id="projectsList" class="mt-8 grid gap-3"></div>
+<div class="glass p-6 rounded-2xl"><i class="fa-solid fa-key text-violet-400 text-2xl mb-3"></i><h3 class="font-bold">Passwords</h3><input id="passInput" placeholder="e.g. Gmail - mypass123" class="w-full bg-black/50 border border-white/10 p-3 rounded-xl text-sm mt-3"><button onclick="addItem('passwords')" class="mt-3 w-full bg-white text-black py-2 rounded-full text-sm font-bold hover:bg-white/90">Save</button></div>
+<div class="glass p-6 rounded-2xl"><i class="fa-solid fa-file text-blue-400 text-2xl mb-3"></i><h3 class="font-bold">Files</h3><input id="fileInput" placeholder="e.g. Bank doc" class="w-full bg-black/50 border border-white/10 p-3 rounded-xl text-sm mt-3"><button onclick="addItem('files')" class="mt-3 w-full bg-white text-black py-2 rounded-full text-sm font-bold hover:bg-white/90">Save</button></div>
+<div class="glass p-6 rounded-2xl"><i class="fa-solid fa-note-sticky text-green-400 text-2xl mb-3"></i><h3 class="font-bold">Notes</h3><input id="noteInput" placeholder="e.g. Secret note" class="w-full bg-black/50 border border-white/10 p-3 rounded-xl text-sm mt-3"><button onclick="addItem('notes')" class="mt-3 w-full bg-white text-black py-2 rounded-full text-sm font-bold hover:bg-white/90">Save</button></div>
 </div>
 
-<!-- SETTINGS - CHANGE USERNAME & PASSWORD -->
-<div id="settingsModal" class="fixed inset-0 bg-black/80 backdrop-blur hidden items-center justify-center p-4 z-50">
-<div class="glass max-w-md w-full p-6 rounded-2xl">
-<div class="flex justify-between items-center mb-6"><h2 class="font-bold text-xl">Settings</h2><button onclick="closeSettings()" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button></div>
-<h3 class="font-bold mb-3 text-violet-400">Change Username & Password</h3>
-<label class="text-sm text-white/60">New Username / Email</label><input id="newUsername" class="w-full bg-black/50 border border-white/10 p-3 rounded-xl mt-1 mb-4" placeholder="New username">
+<div class="mt-8 glass p-6 rounded-2xl"><h3 class="font-bold mb-4 flex items-center gap-2"><i class="fa-solid fa-vault"></i> Your Vault</h3><div id="items" class="space-y-2 text-sm text-white/70">No items yet.</div></div>
+</div>
+
+<!-- SETTINGS MODAL - CHANGE USERNAME & PASSWORD AFTER LOGIN -->
+<div id="settingsModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
+<div class="glass max-w-md w-full p-6 rounded-2xl border border-violet-500/30">
+<div class="flex justify-between items-center mb-6"><h2 class="font-bold text-xl"><i class="fa-solid fa-gear mr-2 text-violet-400"></i>Settings</h2><button onclick="closeSettings()" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button></div>
+<div class="bg-violet-600/20 border border-violet-500/30 p-3 rounded-xl mb-5 text-xs text-violet-200">You are logged in. You can change your username and password here.</div>
+<label class="text-sm text-white/60">New Username</label><input id="newUsername" class="w-full bg-black/50 border border-white/10 p-3 rounded-xl mt-1 mb-4" placeholder="New username">
+<label class="text-sm text-white/60">Current Password (confirm it's you)</label><input id="currentPass" type="password" class="w-full bg-black/50 border border-white/10 p-3 rounded-xl mt-1 mb-4" placeholder="Current password">
 <label class="text-sm text-white/60">New Password</label><input id="newPassword" type="password" class="w-full bg-black/50 border border-white/10 p-3 rounded-xl mt-1 mb-6" placeholder="New password">
-<button onclick="updateUser()" class="w-full bg-violet-600 py-3 rounded-full font-bold">Update Username & Password</button>
-<button onclick="closeSettings()" class="w-full mt-3 bg-white/10 py-3 rounded-full">Cancel</button>
-<p class="text-xs text-white/40 mt-3 text-center">This updates your Supabase account</p>
+<button onclick="saveSettings()" class="w-full bg-violet-600 hover:bg-violet-700 py-3 rounded-full font-bold transition">Update Username & Password</button>
+<button onclick="closeSettings()" class="w-full mt-3 bg-white/10 py-3 rounded-full hover:bg-white/15">Cancel</button>
 </div>
 </div>
-
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"CyberVaultOrg","url":"https://cybervaultorg.netlify.app","description":"Secure digital vault"}
-</script>
 
 <script>
-// === YOUR SUPABASE KEYS - FROM YOUR ORIGINAL FILE ===
-const SUPABASE_URL = "https://orqwtownprnqkxgqqejwj.supabase.co";
-const SUPABASE_KEY = "sb_publishable_j4EXdvNnV5V0Y1aFhV0Y1aFexamplekey_ReplaceWithYourFullKey";
-const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-let currentUser=null; let projects=[];
-
-async function checkAuth(){
-  const { data } = await supabaseClient.auth.getSession();
-  if(data.session){
-    currentUser=data.session.user;
-    document.getElementById('loginScreen').classList.add('hidden');
-    document.getElementById('mainVault').classList.remove('hidden');
-    document.getElementById('welcomeName').innerText=currentUser.email;
-    document.getElementById('userDisplay').innerText=currentUser.email;
-    document.getElementById('userDisplay').classList.remove('hidden');
-    loadProjects();
-  }
-}
-async function doSignup(){
-  const email=document.getElementById('loginUser').value.trim();
-  const password=document.getElementById('loginPass').value.trim();
-  if(!email||!password) return alert('Enter username & password');
-  const { data, error } = await supabaseClient.auth.signUp({email,password});
-  document.getElementById('authMsg').innerText= error ? error.message : 'Account created! Check email if needed, then login.';
-  if(!error) checkAuth();
-}
-async function doLogin(){
-  const email=document.getElementById('loginUser').value.trim();
-  const password=document.getElementById('loginPass').value.trim();
-  const { data, error } = await supabaseClient.auth.signInWithPassword({email,password});
-  if(error){ document.getElementById('authMsg').innerText=error.message; return alert(error.message); }
-  checkAuth();
-}
-async function logOut(){ await supabaseClient.auth.signOut(); location.reload(); }
-function openSettings(){ document.getElementById('newUsername').value=currentUser?.email||''; document.getElementById('settingsModal').classList.remove('hidden'); document.getElementById('settingsModal').classList.add('flex'); }
-function closeSettings(){ document.getElementById('settingsModal').classList.add('hidden'); }
-async function updateUser(){
-  const newEmail=document.getElementById('newUsername').value.trim();
-  const newPass=document.getElementById('newPassword').value.trim();
-  if(!newEmail && !newPass) return alert('Enter new username or password');
-  let updates={};
-  if(newEmail) updates.email=newEmail;
-  if(newPass) updates.password=newPass;
-  const { data, error } = await supabaseClient.auth.updateUser(updates);
-  if(error) return alert(error.message);
-  alert('Username & Password updated! You may need to confirm email.');
-  closeSettings();
-  checkAuth();
-}
-async function loadProjects(){ /* your original loadProjects logic */ }
-async function saveProject(type){ /* your original save logic */ }
-function card(p){ return `<div class="glass p-4 rounded-xl"><b>${p.type}</b>: ${p.content}</div>`; }
-function render(){}
-checkAuth();
+function checkAuth(){let u=localStorage.getItem('cv_user');let p=localStorage.getItem('cv_pass');if(u&&p){document.getElementById('loginScreen').classList.add('hidden');document.getElementById('mainVault').classList.remove('hidden');document.getElementById('afterLoginNav').classList.remove('hidden');document.getElementById('afterLoginNav').innerText='Logged in as '+u;document.getElementById('welcomeName').innerText=u;render();}}
+function login(){let u=document.getElementById('loginUser').value.trim();let p=document.getElementById('loginPass').value.trim();if(!u||!p)return alert('Enter username and password');let su=localStorage.getItem('cv_user');let sp=localStorage.getItem('cv_pass');if(!su){localStorage.setItem('cv_user',u);localStorage.setItem('cv_pass',p);checkAuth();}else{if(u===su&&p===sp)checkAuth();else alert('Wrong username or password!');}}
+function logout(){if(confirm('Logout from CyberVaultOrg?')){document.getElementById('mainVault').classList.add('hidden');document.getElementById('loginScreen').classList.remove('hidden');document.getElementById('afterLoginNav').classList.add('hidden');document.getElementById('loginUser').value='';document.getElementById('loginPass').value='';}}
+function openSettings(){document.getElementById('newUsername').value=localStorage.getItem('cv_user')||'';document.getElementById('settingsModal').classList.remove('hidden');document.getElementById('settingsModal').classList.add('flex');}
+function closeSettings(){document.getElementById('settingsModal').classList.add('hidden');document.getElementById('settingsModal').classList.remove('flex');}
+function saveSettings(){let nu=document.getElementById('newUsername').value.trim();let cp=document.getElementById('currentPass').value.trim();let np=document.getElementById('newPassword').value.trim();let sp=localStorage.getItem('cv_pass');if(!nu)return alert('Enter new username');if(cp!==sp)return alert('Current password is wrong!');if(!np)return alert('Enter new password');localStorage.setItem('cv_user',nu);localStorage.setItem('cv_pass',np);document.getElementById('welcomeName').innerText=nu;document.getElementById('afterLoginNav').innerText='Logged in as '+nu;alert('✅ Username & Password updated!');closeSettings();document.getElementById('currentPass').value='';document.getElementById('newPassword').value='';}
+function addItem(t){let id=t==='passwords'?'passInput':t==='files'?'fileInput':'noteInput';let v=document.getElementById(id).value.trim();if(!v)return alert('Type something!');let items=JSON.parse(localStorage.getItem('cv_items')||'[]');items.push({type:t,val:v,date:new Date().toLocaleString()});localStorage.setItem('cv_items',JSON.stringify(items));document.getElementById(id).value='';render();}
+function render(){let items=JSON.parse(localStorage.getItem('cv_items')||'[]');let el=document.getElementById('items');if(items.length===0){el.innerHTML='No items yet. Add something above.';return;}el.innerHTML=items.map((i,idx)=>`<div class="flex justify-between items-center bg-black/30 p-3 rounded-xl border border-white/5"><span><b class="capitalize text-white">${i.type}:</b> ${i.val}</span><button onclick="del(${idx})" class="text-red-400 hover:text-red-300 ml-2"><i class="fa-solid fa-trash"></i></button></div>`).join('');}
+function del(idx){let items=JSON.parse(localStorage.getItem('cv_items')||'[]');items.splice(idx,1);localStorage.setItem('cv_items',JSON.stringify(items));render();}
+window.onload=checkAuth;
 </script>
 </body>
 </html>
