@@ -4,29 +4,32 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- ============ GOOGLE SEO FOR cybervaultorg ============ -->
+<!-- GOOGLE VERIFICATION - DO NOT REMOVE -->
+<meta name="google-site-verification" content="JJ8y3bD6axi1CY3-EEDwYKptgFu9Dajwz62DdI5mpJ8" />
+
+<!-- ============ GOOGLE SEO FOR cybervaultorg - DO NOT REMOVE ============ -->
 <title>CyberVaultOrg - Secure Digital Vault | cybervaultorg</title>
 <meta name="description" content="CyberVaultOrg is a secure, encrypted digital vault to store passwords, files, and private notes. Search CyberVaultOrg on Google.">
-<meta name="keywords" content="cybervaultorg, cyber vault org, cybervault, secure vault, password manager, project vault, cybersecurity vault">
+<meta name="keywords" content="cybervaultorg, cyber vault org, cybervault, secure vault, password manager, project vault, cybersecurity vault, cybervaultorg netlify">
 <meta name="author" content="CyberVaultOrg">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://cybervaultorg.netlify.app/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="CyberVaultOrg - Secure Digital Vault">
-<meta property="og:description" content="Secure your digital life with CyberVaultOrg - passwords, files and notes vault">
+<meta property="og:description" content="Secure your digital life with CyberVaultOrg - passwords, files and notes vault. Search cybervaultorg on Google.">
 <meta property="og:url" content="https://cybervaultorg.netlify.app/">
 <meta property="og:site_name" content="CyberVaultOrg">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CyberVaultOrg">
-<meta name="twitter:description" content="Secure digital vault for your private data">
+<meta name="twitter:description" content="Secure digital vault for your private data - cybervaultorg">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "CyberVaultOrg",
-  "alternateName": ["cybervaultorg", "Cyber Vault Org"],
+  "alternateName": ["cybervaultorg", "Cyber Vault Org", "cyber vault org"],
   "url": "https://cybervaultorg.netlify.app",
-  "description": "Secure encrypted digital vault to store passwords, files and private notes",
+  "description": "Secure encrypted digital vault to store passwords, files and private notes. Search for cybervaultorg on Google.",
   "applicationCategory": "SecurityApplication",
   "operatingSystem": "Any",
   "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
@@ -40,102 +43,24 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="bg-[#060a0a] text-white min-h-screen" style="font-family:Inter">
-
-<nav class="flex justify-between items-center p-6 max-w-7xl mx-auto border-b border-zinc-900">
-<div class="flex items-center gap-2"><div class="w-8 h-8 bg-teal-500 rounded-lg flex items-center justify-center font-bold">V</div><span class="font-bold">VAULT</span><span class="text-xs bg-teal-500/20 text-teal-400 px-2 py-1 rounded ml-2">LIVE</span></div>
-<div class="flex gap-3 items-center">
-<span id="userEmail" class="text-xs text-zinc-400"></span>
-<button onclick="showPage('explore')" class="text-sm text-zinc-400">Explore</button>
-<button id="settingsBtn" onclick="openSettings()" class="hidden text-sm bg-zinc-800 border border-zinc-700 px-3 py-2 rounded-full"><i class="fa-solid fa-gear mr-1"></i> Settings</button>
-<button id="authBtn" onclick="openAuth()" class="text-sm bg-white text-black px-4 py-2 rounded-full font-semibold">Sign In</button>
-</div>
-</nav>
-
+<nav class="flex justify-between items-center p-6 max-w-7xl mx-auto border-b border-zinc-900"><div class="flex items-center gap-2"><div class="w-8 h-8 bg-teal-500 rounded-lg flex items-center justify-center font-bold">V</div><span class="font-bold">VAULT</span><span class="text-xs bg-teal-500/20 text-teal-400 px-2 py-1 rounded ml-2">LIVE</span></div><div class="flex gap-3 items-center"><span id="userEmail" class="hidden"></span><button onclick="showPage('explore')" class="text-sm text-zinc-400">Explore</button><button id="settingsBtn" onclick="openSettings()" class="hidden text-sm bg-zinc-800 border border-zinc-700 px-3 py-2 rounded-full"><i class="fa-solid fa-gear mr-1"></i> Settings</button><button id="authBtn" onclick="openAuth()" class="text-sm bg-white text-black px-4 py-2 rounded-full font-semibold">Sign In</button></div></nav>
 <div id="authModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur flex items-center justify-center p-4 z-50"><div class="bg-zinc-950 border border-zinc-800 w-full max-w-sm rounded-2xl p-6"><div class="flex justify-between mb-4"><h3 class="font-bold">Join Vault</h3><button onclick="closeAuth()" class="text-zinc-500">✕</button></div><input id="authEmail" placeholder="Email" class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2.5 text-sm mb-3"><input id="authPass" type="password" placeholder="Password" class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2.5 text-sm mb-3"><button onclick="doSignup()" class="w-full bg-teal-600 py-3 rounded-xl font-semibold mb-2">Create Account</button><button onclick="doLogin()" class="w-full bg-zinc-900 border border-zinc-800 py-3 rounded-xl">Log In</button><div id="authMsg" class="text-xs text-teal-400 mt-3 text-center"></div></div></div>
-
 <div class="max-w-7xl mx-auto px-6"><div id="landing"><div class="text-center py-12 max-w-2xl mx-auto"><div class="inline-flex border border-teal-500/30 bg-teal-500/10 text-teal-300 px-4 py-1.5 rounded-full text-xs mb-6">LIVE on Supabase - You Are Host</div><h1 class="text-5xl font-extrabold">Your<br>Cybersecurity<br><span class="text-teal-400">Project Vault</span></h1><p class="text-zinc-400 mt-6">Real accounts. Real database. Others join YOUR vault.</p><div class="mt-8 flex gap-3 justify-center"><button onclick="showPage('explore')" class="bg-teal-600 px-6 py-3 rounded-xl font-semibold">Explore -> </button><button onclick="openNew()" class="bg-zinc-900 border border-zinc-800 px-6 py-3 rounded-xl">+ New Project</button></div></div><div class="grid grid-cols-3 gap-4 mb-6"><div class="bg-zinc-900 border border-zinc-800 p-4 rounded-xl"><div class="text-xs text-zinc-500">Total</div><div id="statTotal" class="text-2xl font-bold">0</div></div><div class="bg-zinc-900 border border-zinc-800 p-4 rounded-xl"><div class="text-xs text-zinc-500">Public</div><div id="statPublic" class="text-2xl font-bold text-teal-400">0</div></div><div class="bg-zinc-900 border border-zinc-800 p-4 rounded-xl"><div class="text-xs text-zinc-500">Host</div><div class="text-sm font-bold">You</div></div></div><div id="myProjects" class="grid md:grid-cols-3 gap-4"></div></div><div id="explore" class="hidden"><h2 class="text-2xl font-bold mb-4 mt-6">Explore Vault</h2><input id="search" oninput="render()" placeholder="Search..." class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-2.5 text-sm mb-4"><div id="exploreGrid" class="grid md:grid-cols-3 gap-4"></div></div></div>
-
 <div id="newModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur flex items-center justify-center p-4 z-50"><div class="bg-zinc-950 border border-zinc-800 w-full max-w-lg rounded-2xl p-6"><div class="flex justify-between mb-4"><h3 class="font-bold">New Project</h3><button onclick="closeNew()" class="text-zinc-500">X</button></div><input id="pTitle" placeholder="Title" class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2.5 text-sm mb-3"><select id="pCat" class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2.5 text-sm mb-3"><option>Web Hacking</option><option>Network Hacking</option><option>Forensics</option><option>Reverse Engineering</option><option>Malware Analysis</option><option>OSINT</option><option>Cloud Security</option><option>Mobile Hacking</option><option>Cryptography</option><option>CTF Writeups</option><option>Tools & Scripts</option></select><textarea id="pDesc" placeholder="Description" class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2.5 text-sm mb-3 h-24"></textarea><input id="pTools" placeholder="Tools: Nmap, Burp" class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2.5 text-sm mb-3"><input id="pGithub" placeholder="GitHub URL" class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2.5 text-sm mb-3"><div class="flex gap-3 mb-4"><label class="flex items-center gap-2 text-sm"><input type="radio" name="vis" value="public" checked> Public</label><label class="flex items-center gap-2 text-sm"><input type="radio" name="vis" value="private"> Private</label></div><button onclick="saveProject()" class="w-full bg-teal-600 py-3 rounded-xl font-semibold">Publish to Supabase</button></div></div>
-
-<!-- SETTINGS MODAL - Change Username & Password AFTER LOGIN -->
-<div id="settingsModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur flex items-center justify-center p-4 z-50">
-<div class="bg-zinc-950 border border-zinc-800 w-full max-w-md rounded-2xl p-6">
-<div class="flex justify-between mb-6"><h3 class="font-bold text-lg"><i class="fa-solid fa-gear mr-2 text-teal-400"></i>Settings</h3><button onclick="closeSettings()" class="text-zinc-500">✕</button></div>
-<div class="bg-teal-500/10 border border-teal-500/20 p-3 rounded-xl mb-5 text-xs text-teal-300">Logged in as <span id="settingsEmail" class="font-bold"></span>. You can change your login here.</div>
-<label class="text-xs text-zinc-500">New Email / Username</label>
-<input id="newUsername" class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2.5 text-sm mb-4 mt-1" placeholder="New email">
-<label class="text-xs text-zinc-500">New Password</label>
-<input id="newPassword" type="password" class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2.5 text-sm mb-6 mt-1" placeholder="New password">
-<button onclick="updateUser()" class="w-full bg-teal-600 py-3 rounded-xl font-semibold">Update Username & Password</button>
-<button onclick="closeSettings()" class="w-full bg-zinc-900 border border-zinc-800 py-3 rounded-xl mt-2">Cancel</button>
-</div>
-</div>
-
+<div id="settingsModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur flex items-center justify-center p-4 z-50"><div class="bg-zinc-950 border border-zinc-800 w-full max-w-md rounded-2xl p-6"><div class="flex justify-between mb-6"><h3 class="font-bold text-lg"><i class="fa-solid fa-gear mr-2 text-teal-400"></i>Settings</h3><button onclick="closeSettings()" class="text-zinc-500">✕</button></div><div class="bg-teal-500/10 border border-teal-500/20 p-3 rounded-xl mb-5 text-xs text-teal-300">Logged in as <span id="settingsEmail" class="font-bold"></span>. You can change your login here.</div><label class="text-xs text-zinc-500">New Email / Username</label><input id="newUsername" class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2.5 text-sm mb-4 mt-1" placeholder="New email"><label class="text-xs text-zinc-500">New Password</label><input id="newPassword" type="password" class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2.5 text-sm mb-6 mt-1" placeholder="New password"><button onclick="updateUser()" class="w-full bg-teal-600 py-3 rounded-xl font-semibold">Update Username & Password</button><button onclick="closeSettings()" class="w-full bg-zinc-900 border border-zinc-800 py-3 rounded-xl mt-2">Cancel</button></div></div>
 <script>
 const SUPABASE_URL = "https://orqwtownprnqkhjmyixo.supabase.co";
 const SUPABASE_KEY = "sb_publishable_j4EXdvLbyIx4GhC-FZJYVA_oZpnB1Mh";
 const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 let currentUser=null; let projects=[];
-
-async function checkAuth(){
- const r=await supabaseClient.auth.getSession();
- if(r.data.session){
-  currentUser=r.data.session.user;
-  document.getElementById('userEmail').innerText=currentUser.email;
-  document.getElementById('authBtn').innerText='Log Out';
-  document.getElementById('authBtn').onclick=logOut;
-  document.getElementById('settingsBtn').classList.remove('hidden');
- }
- loadProjects();
-}
-
-async function doSignup(){
- const email=document.getElementById('authEmail').value;
- const pass=document.getElementById('authPass').value;
- const res=await supabaseClient.auth.signUp({email,password:pass});
- document.getElementById('authMsg').innerText=res.error?res.error.message:'Account created! Login now.';
- if(!res.error && res.data.user){
-  try{ await supabaseClient.from('profiles').insert({id:res.data.user.id,email}); }catch(e){}
-  closeAuth(); checkAuth();
- }
-}
-async function doLogin(){
- const email=document.getElementById('authEmail').value;
- const pass=document.getElementById('authPass').value;
- const res=await supabaseClient.auth.signInWithPassword({email,password:pass});
- document.getElementById('authMsg').innerText=res.error?res.error.message:'Logged in!';
- if(!res.error){closeAuth(); checkAuth();}
-}
+async function checkAuth(){ const r=await supabaseClient.auth.getSession(); if(r.data.session){currentUser=r.data.session.user; document.getElementById('authBtn').innerText='Log Out'; document.getElementById('authBtn').onclick=logOut; document.getElementById('settingsBtn').classList.remove('hidden');} loadProjects(); }
+async function doSignup(){ const email=document.getElementById('authEmail').value; const pass=document.getElementById('authPass').value; const res=await supabaseClient.auth.signUp({email,password:pass}); document.getElementById('authMsg').innerText=res.error?res.error.message:'Account created! Login now.'; if(!res.error && res.data.user){ try{ await supabaseClient.from('profiles').insert({id:res.data.user.id,email}); }catch(e){} closeAuth(); checkAuth(); } }
+async function doLogin(){ const email=document.getElementById('authEmail').value; const pass=document.getElementById('authPass').value; const res=await supabaseClient.auth.signInWithPassword({email,password:pass}); document.getElementById('authMsg').innerText=res.error?res.error.message:'Logged in!'; if(!res.error){closeAuth(); checkAuth();} }
 async function logOut(){await supabaseClient.auth.signOut(); location.reload();}
-
-function openAuth(){document.getElementById('authModal').classList.remove('hidden')}
-function closeAuth(){document.getElementById('authModal').classList.add('hidden')}
-function openNew(){if(!currentUser){openAuth(); return;} document.getElementById('newModal').classList.remove('hidden')}
-function closeNew(){document.getElementById('newModal').classList.add('hidden')}
-function showPage(p){document.getElementById('landing').classList.toggle('hidden',p!=='landing'); document.getElementById('explore').classList.toggle('hidden',p!=='explore'); if(p==='explore') document.getElementById('landing').classList.add('hidden');}
-
-// SETTINGS - Change Username & Password AFTER LOGIN
-function openSettings(){
- if(!currentUser) return openAuth();
- document.getElementById('settingsEmail').innerText=currentUser.email;
- document.getElementById('newUsername').value=currentUser.email;
- document.getElementById('settingsModal').classList.remove('hidden');
-}
+function openAuth(){document.getElementById('authModal').classList.remove('hidden')} function closeAuth(){document.getElementById('authModal').classList.add('hidden')} function openNew(){if(!currentUser){openAuth(); return;} document.getElementById('newModal').classList.remove('hidden')} function closeNew(){document.getElementById('newModal').classList.add('hidden')} function showPage(p){document.getElementById('landing').classList.toggle('hidden',p!=='landing'); document.getElementById('explore').classList.toggle('hidden',p!=='explore'); if(p==='explore') document.getElementById('landing').classList.add('hidden');}
+function openSettings(){ if(!currentUser) return openAuth(); document.getElementById('settingsEmail').innerText=currentUser.email; document.getElementById('newUsername').value=currentUser.email; document.getElementById('settingsModal').classList.remove('hidden');}
 function closeSettings(){document.getElementById('settingsModal').classList.add('hidden');}
-async function updateUser(){
- const newEmail=document.getElementById('newUsername').value.trim();
- const newPass=document.getElementById('newPassword').value.trim();
- let updates={};
- if(newEmail && newEmail!==currentUser.email) updates.email=newEmail;
- if(newPass) updates.password=newPass;
- if(Object.keys(updates).length===0) return alert('Enter new email or password');
- const {data, error}=await supabaseClient.auth.updateUser(updates);
- if(error) return alert(error.message);
- alert('✅ Updated! If you changed email, check inbox to confirm.');
- closeSettings();
- checkAuth();
-}
-
+async function updateUser(){ const newEmail=document.getElementById('newUsername').value.trim(); const newPass=document.getElementById('newPassword').value.trim(); let updates={}; if(newEmail && newEmail!==currentUser.email) updates.email=newEmail; if(newPass) updates.password=newPass; if(Object.keys(updates).length===0) return alert('Enter new email or password'); const {data, error}=await supabaseClient.auth.updateUser(updates); if(error) return alert(error.message); alert('✅ Updated! If you changed email, check inbox to confirm.'); closeSettings(); checkAuth();}
 async function loadProjects(){const res=await supabaseClient.from('projects').select('*').order('created_at',{ascending:false}); if(res.data){projects=res.data; render();}}
 async function saveProject(){const proj={user_id:currentUser.id,title:document.getElementById('pTitle').value,category:document.getElementById('pCat').value,description:document.getElementById('pDesc').value,tools:document.getElementById('pTools').value,github_url:document.getElementById('pGithub').value,visibility:document.querySelector('input[name=vis]:checked').value}; const res=await supabaseClient.from('projects').insert(proj); if(res.error) alert(res.error.message); else {closeNew(); loadProjects();}}
 function card(p){return '<div class="bg-zinc-900 border border-zinc-800 rounded-xl p-5"><div class="flex justify-between mb-3"><span class="text-[10px] bg-zinc-800 px-2 py-1 rounded-full">'+p.category+'</span><span class="text-[10px] bg-teal-500/10 text-teal-400 px-2 py-1 rounded-full">'+p.visibility+'</span></div><div class="font-semibold mb-1">'+p.title+'</div><div class="text-xs text-zinc-500 mb-3">'+(p.description||'')+'</div><div class="text-[11px] text-zinc-600">'+new Date(p.created_at).toLocaleDateString()+'</div></div>';}
